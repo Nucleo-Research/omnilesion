@@ -1,0 +1,13 @@
+# Training environment (Python 3.12, CUDA 12). Install torch for your CUDA first, then:
+#   pip install -r requirements-train.txt && python -m omnilesion.nnunet_trainer.install
+nnunetv2==2.6.0
+dynamic-network-architectures==0.4.1
+cupy-cuda12x>=13.0          # GPU connected components in the component-balanced loss
+monai==1.6.0                # lung-nodule detector
+nibabel>=5.3
+scipy>=1.15
+SimpleITK>=2.4
+numpy<2.1
+einops>=0.8
+TotalSegmentator>=2.4       # only for scripts/04_run_totalsegmentator.sh / 05_attribute_lesions.py
+git+https://github.com/deepmind/surface-distance.git   # only for scripts/evaluation/score_cases.py

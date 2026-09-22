@@ -1,0 +1,13 @@
+{
+    "channel_names": {
+        "0": "CT"
+    },
+    "labels": {
+        "background": 0,
+        "tumor": 1
+    },
+    "numTraining": 17575,
+    "file_ending": ".nii.gz",
+    "dataset_name": "Dataset501_OmniLesion",
+    "description": "Symlink view of the FLARE 2026 Task 1 labelled training set (binary lesion label)."
+}

@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pth
+*.pt
+*.npz
+*.npy
+*.nii
+*.nii.gz
+*.tar.gz
+/outputs/
+/bench/
+.DS_Store

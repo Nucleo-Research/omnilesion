@@ -1,0 +1,16 @@
+OmniLesion
+Copyright 2026 Nucleo Research
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This repository builds on and includes adapted code from:
+
+* nnU-Net v2 (https://github.com/MIC-DKFZ/nnUNet), Apache-2.0. The trainer in omnilesion/nnunet_trainer extends
+  nnunetv2.training.nnUNetTrainer.nnUNetTrainer and reuses its data-loader construction; omnilesion/inference.py
+  adapts nnunetv2.preprocessing.resampling.resample_torch.resample_torch_fornnunet.
+* MONAI (https://github.com/Project-MONAI/MONAI), Apache-2.0. The lung-nodule detector is assembled from MONAI's
+  RetinaNet, ResNet and anchor utilities; its configuration follows MONAI's lung_nodule_ct_detection bundle. No
+  pretrained weights are used.
+* dynamic-network-architectures (https://github.com/MIC-DKFZ/dynamic-network-architectures), Apache-2.0.
+* The component-balanced loss is in the spirit of blob loss (Kofler et al., 2023).
+* Case-level surface metrics use surface-distance (https://github.com/deepmind/surface-distance), Apache-2.0.
