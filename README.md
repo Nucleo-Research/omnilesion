@@ -94,8 +94,10 @@ cp data/split_train_sentinel.json data/case_weights_alpha07.json $P/
 ```
 
 `split_train_sentinel.json` holds 16,975 training cases and a 200-case sentinel that nnU-Net uses for its own
-patch-level validation (no model selection is done on it). Excluded from training are the 274 held-out cases of
-`data/heldout_274.csv` (with cohort and body region) and 200 further cases. To build a different split:
+patch-level validation (no model selection is done on it). Of the 17,575 labelled cases, 600 are kept out of
+training: the 200 sentinel cases, the 200 remaining cases of the held-out set (`data/heldout_274.csv`, with cohort
+and body region; its other 74 cases are part of the sentinel), and 200 further cases reserved for evaluation. To
+build a different split:
 
 ```bash
 python scripts/03_build_split.py --dataset-id 501 --exclude data/heldout_274.csv --sentinel sentinel_cases.txt \
@@ -122,7 +124,7 @@ native label grid, which yields the same families with slightly different millil
 ### 1.3 Training
 
 ```bash
-scripts/07_train.sh                # 4000 epochs x 750 iterations = 3.0 M updates, ~54 h on one H100
+scripts/07_train.sh                # 4000 epochs x 750 iterations = 3.0 M updates, ~55 h on one H100
 ```
 
 Settings (all overridable through `OMNILESION_*` variables, see the trainer's docstring): SGD with Nesterov momentum
@@ -147,7 +149,7 @@ python scripts/lung_cascade/prepare_nodule_data.py --raw $nnUNet_raw/Dataset501_
 python scripts/lung_cascade/train_detector.py --cache /fast_disk/nodule_cache --out /fast_disk/detector \
     --iters 300000 --batch 4 --val-every 20000                                           # ~7 h on one H100
 python scripts/lung_cascade/train_segmentor.py --cache /fast_disk/nodule_cache --out /fast_disk/segmentor \
-    --iters 40000 --batch 16                                                             # ~40 min
+    --iters 40000 --batch 16                                                             # ~45 min
 mkdir lung_weights && cp /fast_disk/detector/ckpt_300000.pt lung_weights/detector.pt && \
     cp /fast_disk/segmentor/segmentor_state_dict.pt /fast_disk/segmentor/segmentor_manifest.json lung_weights/
 ```

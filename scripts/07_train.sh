@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Train the main model: 4000 epochs x 750 iterations (3.0M updates) on one GPU, ~54 h on an H100.
+# Train the main model: 4000 epochs x 750 iterations (3.0M updates) on one GPU, ~55 h on an H100.
 # The trainer must have been installed into nnU-Net first: python -m omnilesion.nnunet_trainer.install
 set -Eeuo pipefail
 DATASET_ID=${DATASET_ID:-501}
