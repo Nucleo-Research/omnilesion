@@ -23,7 +23,7 @@ RUN python -m pip install --no-cache-dir \
         SimpleITK==2.4.1 nibabel==5.3.2 scipy==1.15.2 scikit-image==0.25.2 numpy==1.26.4 pandas==2.2.3 tqdm==4.67.1 \
         dynamic-network-architectures==0.4.1 acvl-utils==0.2.3 batchgenerators==0.25.1 batchgeneratorsv2==0.2.3 \
         graphviz==0.20.3 connected-components-3d==3.21.0 matplotlib==3.11.1 seaborn==0.13.2 einops==0.8.1 \
-        blosc2==3.2.1 yacs==0.1.8 imagecodecs==2024.12.30 scikit-learn==1.6.1 tifffile==2025.3.13 requests==2.32.3 && \
+        blosc2==3.2.1 yacs==0.1.8 imagecodecs==2024.12.30 scikit-learn==1.6.1 tifffile==2025.3.13 requests==2.33.0 && \
     python -m pip install --no-cache-dir --no-deps nnunetv2==2.6.0 monai==1.6.0
 
 # The OmniLesion package and its trainer (nnU-Net rebuilds the network from checkpoint['trainer_name']).

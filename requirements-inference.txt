@@ -14,7 +14,7 @@ batchgenerators==0.25.1
 batchgeneratorsv2==0.2.3
 scikit-learn==1.6.1
 tifffile==2025.3.13
-requests==2.32.3
+requests==2.33.0
 yacs==0.1.8
 imagecodecs==2024.12.30
 pandas==2.2.3
