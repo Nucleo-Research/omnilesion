@@ -228,7 +228,12 @@ The weights of the submitted model (main network, 820 MB checkpoint with optimis
 segmentor_manifest.json), which is exactly what `scripts/08_predict.py --model weights/model --lung-dir weights/lung`
 and `docker/build_context.sh` expect:
 
+Access is gated: the weights are released for non-commercial research under CC BY-NC 4.0, and downloads require a
+Hugging Face account and an approved access request (the form is on the model page; requests are reviewed by
+Nucleo Research). Once approved:
+
 ```bash
+hf auth login
 hf download Nucleo-Research/omnilesion --local-dir weights
 ```
 
@@ -248,5 +253,6 @@ network tensors are the ones inside the submitted container.
 
 ## License and citation
 
-Apache-2.0 (see `LICENSE` and `NOTICE` for the nnU-Net, MONAI and surface-distance components this work builds on).
+Code: Apache-2.0 (see `LICENSE` and `NOTICE` for the nnU-Net, MONAI and surface-distance components this work builds
+on). Trained weights: CC BY-NC 4.0, non-commercial research use, access on request via Hugging Face.
 If you use this code, please cite the paper above and the FLARE 2026 challenge.
