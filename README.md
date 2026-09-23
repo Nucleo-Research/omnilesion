@@ -223,13 +223,13 @@ the organisers), the 50 public validation cases with complete labels, the 274 he
 ## Trained weights
 
 The weights of the submitted model (main network, 820 MB checkpoint with optimiser state; detector, 84 MB; segmentor,
-3 MB) are published on Hugging Face at https://huggingface.co/NucleoResearch/omnilesion, laid out as `model/`
+3 MB) are published on Hugging Face at https://huggingface.co/Nucleo-Research/omnilesion, laid out as `model/`
 (plans.json, dataset.json, fold_0/checkpoint_final.pth) and `lung/` (detector.pt, segmentor_state_dict.pt,
 segmentor_manifest.json), which is exactly what `scripts/08_predict.py --model weights/model --lung-dir weights/lung`
 and `docker/build_context.sh` expect:
 
 ```bash
-hf download NucleoResearch/omnilesion --local-dir weights
+hf download Nucleo-Research/omnilesion --local-dir weights
 ```
 
 The stored trainer and plan names were renamed to the ones used here with `tools/relabel_release_weights.py`; the
