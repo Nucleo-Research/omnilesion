@@ -11,6 +11,15 @@ probability map, and a lung-nodule cascade (RetinaNet proposals and a 65^3 patch
 lungs of scans that contain them) adds the small pulmonary nodules the coarse grid cannot represent. On the challenge's
 hidden validation set (100 cases) the submitted container scores 0.8122 lesion DSC and 0.7642 lesion NSD.
 
+![OmniLesion pipeline](docs/pipeline_overview.png)
+
+*The system at inference. The CT is resampled to 3 x 2 x 2 mm and expanded into three channels (standardised CT,
+soft-tissue window, lung window) for the residual-encoder 3D U-Net; its probability map is binarised at 0.20,
+components with 99th-percentile confidence below 0.98 are removed and a negligible total is emptied. In parallel,
+a lung gate admits scans with more than 3.5 L of lung; inside their lung box, at 1 mm isotropic spacing, a RetinaNet
+proposes nodules and a 65^3 patch U-Net segments each proposal with confidence at least 0.98. The union of both masks
+is the output.*
+
 Paper: *Pan-cancer Lesion Segmentation in CT under Heterogeneous and Partial Annotation* (FLARE 2026 proceedings, in
 preparation). Section numbers below refer to it.
 
@@ -214,8 +223,17 @@ the organisers), the 50 public validation cases with complete labels, the 274 he
 ## Trained weights
 
 The weights of the submitted model (main network, 820 MB checkpoint with optimiser state; detector, 84 MB; segmentor,
-3 MB) will be attached to a GitHub release of this repository. `tools/relabel_release_weights.py` renames a model
-folder trained under other trainer/plan names so it loads with the names used here.
+3 MB) are published on Hugging Face at https://huggingface.co/NucleoResearch/omnilesion, laid out as `model/`
+(plans.json, dataset.json, fold_0/checkpoint_final.pth) and `lung/` (detector.pt, segmentor_state_dict.pt,
+segmentor_manifest.json), which is exactly what `scripts/08_predict.py --model weights/model --lung-dir weights/lung`
+and `docker/build_context.sh` expect:
+
+```bash
+hf download NucleoResearch/omnilesion --local-dir weights
+```
+
+The stored trainer and plan names were renamed to the ones used here with `tools/relabel_release_weights.py`; the
+network tensors are the ones inside the submitted container.
 
 ## Files in data/
 
