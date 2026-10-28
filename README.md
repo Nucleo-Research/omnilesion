@@ -105,8 +105,8 @@ cp data/split_train_sentinel.json data/case_weights_alpha07.json $P/
 `split_train_sentinel.json` holds 16,975 training cases and a 200-case sentinel that nnU-Net uses for its own
 patch-level validation (no model selection is done on it). Of the 17,575 labelled cases, 600 are kept out of
 training: the 200 sentinel cases, the 200 remaining cases of the held-out set (`data/heldout_274.csv`, with cohort
-and body region; its other 74 cases are part of the sentinel), and 200 further cases reserved for evaluation. To
-build a different split:
+and body region; its other 74 cases are part of the sentinel), and 200 further cases set aside under an earlier
+evaluation protocol and not used in this work. To build a different split:
 
 ```bash
 python scripts/03_build_split.py --dataset-id 501 --exclude data/heldout_274.csv --sentinel sentinel_cases.txt \
