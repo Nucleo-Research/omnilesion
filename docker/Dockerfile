@@ -24,7 +24,7 @@ RUN python -m pip install --no-cache-dir \
         dynamic-network-architectures==0.4.1 acvl-utils==0.2.3 batchgenerators==0.25.1 batchgeneratorsv2==0.2.3 \
         graphviz==0.20.3 connected-components-3d==3.21.0 matplotlib==3.11.1 seaborn==0.13.2 einops==0.8.1 \
         blosc2==3.2.1 yacs==0.1.8 imagecodecs==2024.12.30 scikit-learn==1.6.1 tifffile==2025.3.13 requests==2.33.0 && \
-    python -m pip install --no-cache-dir --no-deps nnunetv2==2.6.0 monai==1.6.0
+    python -m pip install --no-cache-dir --no-deps nnunetv2==2.6.0 monai==1.6.1
 
 # The OmniLesion package and its trainer (nnU-Net rebuilds the network from checkpoint['trainer_name']).
 COPY omnilesion /workspace/omnilesion

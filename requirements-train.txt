@@ -3,7 +3,7 @@
 nnunetv2==2.6.0
 dynamic-network-architectures==0.4.1
 cupy-cuda12x>=13.0          # GPU connected components in the component-balanced loss
-monai==1.6.0                # lung-nodule detector
+monai==1.6.1                # lung-nodule detector
 nibabel>=5.3
 scipy>=1.15
 SimpleITK>=2.4
